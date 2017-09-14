@@ -9,7 +9,7 @@ const printWarning = (warning, showStacktrace) => {
 };
 
 const defaultOptions = {
-  full: false
+  verbose: false
 };
 
 function ErrorLogger(options) {
@@ -22,11 +22,11 @@ ErrorLogger.prototype.apply = function apply(compiler) {
     const { errors, warnings } = stats.compilation;
 
     if (stats.hasWarnings()) {
-      warnings.forEach(warning => printWarning(warning, this.options.full));
+      warnings.forEach(warning => printWarning(warning, this.options.verbose));
     }
 
     if (stats.hasErrors()) {
-      errors.forEach(error => printError(error, this.options.full));
+      errors.forEach(error => printError(error, this.options.verbose));
       process.exit(1);
     }
   });

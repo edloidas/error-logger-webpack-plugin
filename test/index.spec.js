@@ -5,12 +5,12 @@ describe('ErrorLogger', () => {
     const options = {};
     const logger = new ErrorLogger(options);
 
-    expect(options).not.toHaveProperty('full');
-    expect(logger).toHaveProperty('options.full', false);
+    expect(options).not.toHaveProperty('verbose');
+    expect(logger).toHaveProperty('options.verbose', false);
   });
 
   test('should set options', () => {
-    const logger = new ErrorLogger({ full: true });
-    expect(logger).toHaveProperty('options.full', true);
+    const logger = new ErrorLogger({ verbose: true });
+    expect(logger).toHaveProperty('options.verbose', true);
   });
 });
