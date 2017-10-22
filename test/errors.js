@@ -53,8 +53,29 @@ const fileError = {
   file: 'absolute/path/to/file.js'
 };
 
+const tsLoaderErrorLong = {
+  message:
+    "\u001b[90m[tsl] \u001b[39m\u001b[1m\u001b[31mERROR\u001b[39m\u001b[22m\u001b[1m\u001b[31m in \u001b[39m\u001b[22m\u001b[1m\u001b[36mC:\\path\\to\\File.ts(15,15)\u001b[39m\u001b[22m\r\n\u001b[1m\u001b[31m      TS2559: Type 'string' has no properties in common with type 'ModalDialogConfig'.\u001b[39m\u001b[22m",
+  location: { line: 15, character: 15 },
+  file: undefined,
+  loaderSource: 'ts-loader',
+  module: {
+    resource: 'C:\\path\\to\\File.ts'
+  }
+};
+
+const tsLoaderErrorShort = {
+  message:
+    "\u001b[90m[tsl] \u001b[39m\u001b[1m\u001b[31mERROR\u001b[39m\u001b[22m\u001b[1m\u001b[31m in \u001b[39m\u001b[22m\u001b[1m\u001b[36mC:\\path\\to\\File.ts(10,9)\u001b[39m\u001b[22m\r\n\u001b[1m\u001b[31m      TS17009: 'super' must be called before accessing 'this' in the constructor of a derived class.\u001b[39m\u001b[22m",
+  location: { line: 10, character: 9 },
+  file: 'C:\\path\\to\\File.ts',
+  loaderSource: 'ts-loader'
+};
+
 module.exports = {
   webpackError,
   compilerError,
-  fileError
+  fileError,
+  tsLoaderErrorLong,
+  tsLoaderErrorShort
 };

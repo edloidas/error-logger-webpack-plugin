@@ -1,5 +1,12 @@
-const { webpackError, compilerError, fileError } = require('./errors');
 const {
+  webpackError,
+  compilerError,
+  fileError,
+  tsLoaderErrorLong,
+  tsLoaderErrorShort
+} = require('./errors');
+const {
+  isTSLoaderError,
   isWebpackError,
   isCompilerError,
   isFileError,
@@ -11,6 +18,7 @@ const {
 describe('Formatter', () => {
   test('should determine webpack errors', () => {
     expect(isWebpackError(webpackError)).toBeTruthy();
+    expect(isWebpackError(tsLoaderErrorShort)).toBeFalsy();
     expect(isWebpackError(compilerError)).toBeFalsy();
     expect(isWebpackError(fileError)).toBeFalsy();
     expect(isWebpackError(new Error('message'))).toBeFalsy();
@@ -18,6 +26,7 @@ describe('Formatter', () => {
 
   test('should determine compiler errors', () => {
     expect(isCompilerError(compilerError)).toBeTruthy();
+    expect(isCompilerError(tsLoaderErrorShort)).toBeFalsy();
     expect(isCompilerError(webpackError)).toBeFalsy();
     expect(isCompilerError(fileError)).toBeFalsy();
     expect(isCompilerError(new Error('message'))).toBeFalsy();
@@ -25,9 +34,19 @@ describe('Formatter', () => {
 
   test('should determine file errors', () => {
     expect(isFileError(fileError)).toBeTruthy();
+    expect(isFileError(tsLoaderErrorShort)).toBeFalsy();
     expect(isFileError(webpackError)).toBeFalsy();
     expect(isFileError(compilerError)).toBeFalsy();
     expect(isFileError(new Error('message'))).toBeFalsy();
+  });
+
+  test('should determine ts-loader errors', () => {
+    expect(isTSLoaderError(tsLoaderErrorLong)).toBeTruthy();
+    expect(isTSLoaderError(tsLoaderErrorShort)).toBeTruthy();
+    expect(isTSLoaderError(fileError)).toBeFalsy();
+    expect(isTSLoaderError(webpackError)).toBeFalsy();
+    expect(isTSLoaderError(compilerError)).toBeFalsy();
+    expect(isTSLoaderError(new Error('message'))).toBeFalsy();
   });
 
   test('should return valid message when formating', () => {
@@ -41,6 +60,9 @@ describe('Formatter', () => {
     expect(formatError(compilerError)).toEqual(matching);
     matching = expect.stringMatching(/.+\[\d+,\s\d+\]:\s.+/);
     expect(formatError(fileError)).toEqual(matching);
+    matching = expect.stringMatching(/.+\[\d+,\s\d+\]:.+/);
+    expect(formatError(tsLoaderErrorLong)).toEqual(matching);
+    expect(formatError(tsLoaderErrorShort)).toEqual(matching);
   });
 
   test('should format location', () => {
