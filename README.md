@@ -1,5 +1,7 @@
 <h1 align="center">error-logger-webpack-plugin</h1>
 
+## :no_entry_sign: :arrow_heading_up: This repository is moved to [enonic-npm](https://github.com/enonic/enonic-npm/tree/master/packages/error-logger-webpack-plugin) ##
+
 [![Travis Build Status][travis-image]][travis-url]
 [![AppVeyor Build Status][appveyor-image]][appveyor-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
