@@ -1,6 +1,6 @@
-<h1 align="center">error-logger-webpack-plugin</h1>
+<h2 align="center"> :heavy_exclamation_mark::heavy_exclamation_mark::heavy_exclamation_mark: This repository is moved to <a href="https://github.com/enonic/enonic-npm/tree/master/packages/error-logger-webpack-plugin">enonic-npm</a> :heavy_exclamation_mark::heavy_exclamation_mark::heavy_exclamation_mark: </h2>
 
-## :no_entry_sign: :arrow_heading_up: This repository is moved to [enonic-npm](https://github.com/enonic/enonic-npm/tree/master/packages/error-logger-webpack-plugin) ##
+<h1 align="center">error-logger-webpack-plugin</h1>
 
 [![Travis Build Status][travis-image]][travis-url]
 [![AppVeyor Build Status][appveyor-image]][appveyor-url]
